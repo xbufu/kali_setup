@@ -322,8 +322,9 @@ function setup_configs() {
     
     # firefox settings
     eval firefox-esr $SILENT
-    sleep 3
+    sleep 5s
     eval killall firefox-esr $SILENT
+    eval killall firefox $SILENT
     profile=`find /root/.mozilla -type d -name "*default-esr"`
     ln -s /root/dotfiles/firefox/user.js "$profile/user.js"
     
