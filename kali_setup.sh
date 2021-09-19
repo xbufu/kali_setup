@@ -255,6 +255,12 @@ function fix_impacket() {
     eval apt -y reinstall python3-impacket impacket-scripts $SILENT
 }
 
+function fix_ssh() {
+    print_header ${FUNCNAME[0]}
+    
+    echo "StrictHostKeyChecking=no" >> /etc/ssh/ssh_config
+}
+
 function apply_fixes() {
     print_header ${FUNCNAME[0]}
 
@@ -277,6 +283,7 @@ function apply_fixes() {
     fix_grub
     fix_smbconf
     fix_impacket
+    fix_ssh
     full_update
 }
 
@@ -288,6 +295,7 @@ function setup_ssh_keys() {
         HOSTNAME=`hostname` ssh-keygen -t ed25519 -C "$HOSTNAME" -f "$HOME/.ssh/id_ed25519" -P "" >/dev/null 2>&1
         eval `ssh-agent -s` $SILENT
         eval ssh-add /root/.ssh/ed_ed25519 $SILENT
+        eval ssh -T git@github.com $SILENT
     fi
 }
 
@@ -323,6 +331,16 @@ function setup_configs() {
     ln -s /root/dotfiles/tmux/vpn.sh /root/.config/tmux/vpn.sh
     echo -e "\nsource /root/.bashrc" >> /root/.profile
     echo -e "\nsource /root/.bashrc" >> /root/.bash_profile
+    
+    # firefox settings
+    eval firefox-esr $SILENT
+    sleep 3
+    eval killall firefox-esr $SILENT
+    profile=`find /root/.mozilla -type d -name "*default-esr"`
+    ln -s /root/dotfiles/firefox/user.js "$profile/user.js"
+    
+    # firefox booksmarks
+    sqlite3 "$profile/places.sqlite" ".restore /root/dotfiles/firefox/places.sqlite"
 }
 
 function install_kali_tools() {
