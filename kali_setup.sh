@@ -37,7 +37,7 @@ function install_basic_tools() {
 function revert_to_bash() {
     print_header ${FUNCNAME[0]}
 
-    eval chsh -s /bin/bash $SILENT
+    eval chsh -s /bin/bash root $SILENT
     eval apt remove -y zsh $SILENT
 }
 
@@ -287,18 +287,6 @@ function apply_fixes() {
     full_update
 }
 
-function setup_ssh_keys() {
-    print_header ${FUNCNAME[0]}
-
-    if [ ! /root/.ssh/id_ed25519 ]
-    then
-        HOSTNAME=`hostname` ssh-keygen -t ed25519 -C "$HOSTNAME" -f "$HOME/.ssh/id_ed25519" -P "" >/dev/null 2>&1
-        eval `ssh-agent -s` $SILENT
-        eval ssh-add /root/.ssh/ed_ed25519 $SILENT
-        eval ssh -T git@github.com $SILENT
-    fi
-}
-
 function setup_git() {
     print_header ${FUNCNAME[0]}
 
@@ -453,7 +441,6 @@ check_root
 full_update
 install_basic_tools
 apply_fixes
-setup_ssh_keys
 setup_git "$git_user" "$git_email"
 setup_configs
 install_kali_tools
