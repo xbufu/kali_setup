@@ -308,7 +308,7 @@ function setup_configs() {
     ln -s /root/dotfiles/bash/.bash_aliases /root/.bash_aliases
 
     # Set up neovim
-    eval sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' $SILENT
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     mkdir -p /root/.config/nvim
     ln -s /root/dotfiles/nvim/init.vim /root/.config/nvim/init.vim
     eval nvim --headless +PlugInstall +qa $SILENT
