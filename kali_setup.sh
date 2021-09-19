@@ -327,6 +327,10 @@ function setup_configs() {
     eval killall firefox $SILENT
     profile=`find /root/.mozilla -type d -name "*default-esr"`
     ln -s /root/dotfiles/firefox/user.js "$profile/user.js"
+    
+    # Wallpaper
+    eval wget https://github.com/xbufu/dotfiles/raw/main/mr-robot-tv-series-artwork.jpg -O /root/Pictures/mr-robot-tv-series-artwork.jpg $SILENT
+    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /root/Pictures/mr-robot-tv-series-artwork.jpg
 }
 
 function install_kali_tools() {
