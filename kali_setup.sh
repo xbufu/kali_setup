@@ -396,6 +396,9 @@ function setup_privesc_tools() {
     eval git clone https://github.com/andyacer/ms08_067 /opt/ms08_067 $SILENT
     eval git clone https://github.com/ivan-sincek/powershell-reverse-tcp /opt/powershell-reverse-tcp $SILENT
     eval git clone https://github.com/turbo/zero2hero /opt/zero2hero-uac-bypass $SILENT
+    eval git clone https://github.com/samratashok/ADModule /opt/ADModule $SILENT
+    eval git clone https://github.com/ivan-sincek/powershell-reverse-tcp /opt/powershell-reverse-tcp $SILENT
+    eval git clone https://github.com/ivan-sincek/java-reverse-tcp /opt/java-reverse-tcp $SILENT
 }
 
 function setup_pe_tools() {
