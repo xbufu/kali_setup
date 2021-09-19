@@ -15,5 +15,5 @@ The script installs a list of custom tools, sets up my personal configurations a
 ./kali_setup.sh -u xbufu -e xbufu@email.com
 
 # Run script and display command output
-./kali_setup.sh -u xbufu -e xbufu@email.com
+./kali_setup.sh -v -u xbufu -e xbufu@email.com
 ```
