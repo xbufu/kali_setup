@@ -341,6 +341,10 @@ function setup_configs() {
     
     # firefox booksmarks
     sqlite3 "$profile/places.sqlite" ".restore /root/dotfiles/firefox/places.sqlite"
+    
+    # wallpaper
+    eval wget https://github.com/xbufu/dotfiles/raw/main/mr-robot-tv-series-artwork.jpg /root/Pictures/mr-robot-tv-series-artwork.jpg $SILENT
+    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /root/Pictures/mr-robot-tv-series-artwork.jpg
 }
 
 function install_kali_tools() {
