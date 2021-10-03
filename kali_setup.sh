@@ -81,7 +81,7 @@ function fix_hushlogin() {
 
     if [ ! -f /root/.hushlogin ]
     then
-        touch /root/.hughlogin
+        touch /root/.hushlogin
     fi
 }
 
@@ -316,7 +316,8 @@ function setup_configs() {
     # Set up tmux
     ln -s /root/dotfiles/tmux/.tmux.conf /root/.tmux.conf
     mkdir -p /root/.config/tmux
-    ln -s /root/dotfiles/tmux/vpn.sh /root/.config/tmux/vpn.sh
+    ln -s /root/dotfiles/tmux/ips.sh /root/.config/tmux/ips.sh
+    ln -s /root/dotfiles/tmux/set_box_ip.sh /usr/bin/set_box_ip
     echo -e "\nsource /root/.bashrc" >> /root/.profile
     echo -e "\nsource /root/.bashrc" >> /root/.bash_profile
     
