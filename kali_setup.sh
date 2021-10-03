@@ -30,7 +30,7 @@ function install_basic_tools() {
     print_header ${FUNCNAME[0]}
 
     eval apt -y remove kali-undercover $SILENT
-    eval apt -y install autogen automake build-essential cifs-utils code-oss curl dkms flameshot gcc-multilib gimp gnupg htop libffi-dev libguestfs-tools libmpc-dev libssl-dev linux-headers-amd64 manpages-dev manpages-posix-dev mlocate neovim openssl python2-dev python3.9-dev python3-argcomplete python3-dev python3-distutils python3-setuptools python3-venv python-setuptools seclists sqlite3 tmux wget xclip $SILENT
+    eval apt -y install autogen automake build-essential cifs-utils code-oss curl dkms flameshot gcc-multilib gimp gnupg htop libffi-dev libguestfs-tools libmpc-dev libssl-dev linux-headers-amd64 manpages-dev manpages-posix-dev mlocate neovim openssl python2-dev python3.9-dev python3-argcomplete python3-dev python3-distutils python3-setuptools python3-venv python-setuptools seclists sqlite3 tmux wget xclip freerdp2-x11 $SILENT
     full_update $SILENT
 }
 
