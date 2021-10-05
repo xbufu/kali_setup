@@ -30,7 +30,7 @@ function install_basic_tools() {
     print_header ${FUNCNAME[0]}
 
     eval apt -y remove kali-undercover $SILENT
-    eval apt -y install autogen automake build-essential cifs-utils code-oss curl dkms flameshot gcc-multilib gimp gnupg htop libffi-dev libguestfs-tools libmpc-dev libssl-dev linux-headers-amd64 manpages-dev manpages-posix-dev mlocate neovim openssl python2-dev python3.9-dev python3-argcomplete python3-dev python3-distutils python3-setuptools python3-venv python-setuptools seclists sqlite3 tmux wget xclip freerdp2-x11 $SILENT
+    eval apt -y install autogen automake build-essential cifs-utils code-oss curl dkms flameshot gcc-multilib gimp gnupg htop libffi-dev libguestfs-tools libmpc-dev libssl-dev linux-headers-amd64 manpages-dev manpages-posix-dev mlocate neovim openssl python2 python2-dev python3.9-dev python3-argcomplete python3-dev python3-distutils python3-setuptools python3-venv python-setuptools seclists sqlite3 tmux wget xclip freerdp2-x11 $SILENT
     full_update $SILENT
 }
 
@@ -91,8 +91,8 @@ function install_pip2() {
     check_pip=$(whereis pip | grep -i -c "/usr/local/bin/pip2.7")
     if [ $check_pip -ne 1 ]
     then
-        eval curl https://raw.githubusercontent.com/pypa/get-pip/3843bff3a0a61da5b63ea0b7d34794c5c51a2f11/2.7/get-pip.py -o /tmp/get-pip.py $SILENT
-        eval python /tmp/get-pip.py $SILENT
+        eval curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o /tmp/get-pip.py $SILENT
+        eval python2 /tmp/get-pip.py $SILENT
         rm -f /tmp/get-pip.py
         eval pip --no-python-version-warning install setuptools $SILENT
 
@@ -251,6 +251,8 @@ function fix_impacket() {
     eval pip install ldapdomaindump $SILENT
     eval pip install wheel $SILENT
     eval pip install /opt/impacket-0.9.23 $SILENT
+    eval pip2 install pysmb $SILENT
+    eval pip3 install pysmb $SILENT
     rm -f /tmp/impacket-0.9.23.tar.gz
     eval apt -y reinstall python3-impacket impacket-scripts $SILENT
 }
